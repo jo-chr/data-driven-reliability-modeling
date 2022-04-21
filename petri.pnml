@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<pnml>
+  <net id="net1" type="http://www.pnml.org/version-2009/grammar/pnmlcoremodel">
+    <page id="n0">
+      <place id="start">
+        <name>
+          <text>start</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="({'cell1_buffer.enter_cell1'}, {'cell1.cell1_operation'})">
+        <name>
+          <text>({'cell1_buffer.enter_cell1'}, {'cell1.cell1_operation'})</text>
+        </name>
+      </place>
+      <place id="agv_failed">
+        <name>
+          <text>agv_failed</text>
+        </name>
+      </place>
+      <place id="cell2_ok">
+        <name>
+          <text>cell2_ok</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="agv_ok">
+        <name>
+          <text>agv_ok</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="cell2_failed">
+        <name>
+          <text>cell2_failed</text>
+        </name>
+      </place>
+      <place id="cell1_ok">
+        <name>
+          <text>cell1_ok</text>
+        </name>
+        <initialMarking>
+          <text>1</text>
+        </initialMarking>
+      </place>
+      <place id="end">
+        <name>
+          <text>end</text>
+        </name>
+      </place>
+      <place id="({'agv.transport_to_cell2_buffer'}, {'cell2_buffer.enter_cell2'})">
+        <name>
+          <text>({'agv.transport_to_cell2_buffer'}, {'cell2_buffer.enter_cell2'})</text>
+        </name>
+      </place>
+      <place id="({'cell2_buffer.enter_cell2'}, {'cell2.cell2_operation'})">
+        <name>
+          <text>({'cell2_buffer.enter_cell2'}, {'cell2.cell2_operation'})</text>
+        </name>
+      </place>
+      <place id="({'system.direct_to_line2'}, {'agv.transport_to_cell2_buffer'})">
+        <name>
+          <text>({'system.direct_to_line2'}, {'agv.transport_to_cell2_buffer'})</text>
+        </name>
+      </place>
+      <place id="({'system.direct_to_line1'}, {'agv.transport_to_cell1_buffer'})">
+        <name>
+          <text>({'system.direct_to_line1'}, {'agv.transport_to_cell1_buffer'})</text>
+        </name>
+      </place>
+      <place id="({'agv.transport_to_cell1_buffer'}, {'cell1_buffer.enter_cell1'})">
+        <name>
+          <text>({'agv.transport_to_cell1_buffer'}, {'cell1_buffer.enter_cell1'})</text>
+        </name>
+      </place>
+      <place id="({'system.new_order'}, {'system.direct_to_line1', 'system.direct_to_line2'})">
+        <name>
+          <text>({'system.new_order'}, {'system.direct_to_line1', 'system.direct_to_line2'})</text>
+        </name>
+      </place>
+      <place id="({'cell2.cell2_operation', 'cell1.cell1_operation'}, {'system.order_completed'})">
+        <name>
+          <text>({'cell2.cell2_operation', 'cell1.cell1_operation'}, {'system.order_completed'})</text>
+        </name>
+      </place>
+      <place id="cell1_failed">
+        <name>
+          <text>cell1_failed</text>
+        </name>
+      </place>
+      <transition id="system.new_order">
+        <name>
+          <text>system.new_order.(i).2511</text>
+        </name>
+      </transition>
+      <transition id="agv.repair">
+        <name>
+          <text>agv.repair.lognorm(0.1,-7.4,17.5)</text>
+        </name>
+      </transition>
+      <transition id="cell2.fail">
+        <name>
+          <text>cell2.fail.lognorm(0.0,-171.7,193.6)</text>
+        </name>
+      </transition>
+      <transition id="cell2.cell2_operation">
+        <name>
+          <text>cell2.cell2_operation.(t).1141.lognorm(0.1,-3.3,9.2)</text>
+        </name>
+      </transition>
+      <transition id="cell1.repair">
+        <name>
+          <text>cell1.repair.norm(10.0,1.1)</text>
+        </name>
+      </transition>
+      <transition id="cell1.fail">
+        <name>
+          <text>cell1.fail.lognorm(0.7,-12.6,82.2)</text>
+        </name>
+      </transition>
+      <transition id="system.direct_to_line2">
+        <name>
+          <text>system.direct_to_line2.(i).1233</text>
+        </name>
+      </transition>
+      <transition id="cell1.cell1_operation">
+        <name>
+          <text>cell1.cell1_operation.(t).1197.lognorm(0.1,-11.2,17.1)</text>
+        </name>
+      </transition>
+      <transition id="agv.transport_to_cell2_buffer">
+        <name>
+          <text>agv.transport_to_cell2_buffer.(t).1151.lognorm(0.6,-1.5,6.1)</text>
+        </name>
+      </transition>
+      <transition id="cell2_buffer.enter_cell2">
+        <name>
+          <text>cell2_buffer.enter_cell2.(i).1141</text>
+        </name>
+      </transition>
+      <transition id="system.order_completed">
+        <name>
+          <text>system.order_completed.(i).2338</text>
+        </name>
+      </transition>
+      <transition id="agv.transport_to_cell1_buffer">
+        <name>
+          <text>agv.transport_to_cell1_buffer.(t).1197.norm(1.9,1.2)</text>
+        </name>
+      </transition>
+      <transition id="agv.fail">
+        <name>
+          <text>agv.fail.lognorm(0.5,14.2,147.9)</text>
+        </name>
+      </transition>
+      <transition id="cell2.repair">
+        <name>
+          <text>cell2.repair.norm(9.9,1.1)</text>
+        </name>
+      </transition>
+      <transition id="system.direct_to_line1">
+        <name>
+          <text>system.direct_to_line1.(i).1278</text>
+        </name>
+      </transition>
+      <transition id="cell1_buffer.enter_cell1">
+        <name>
+          <text>cell1_buffer.enter_cell1.(i).1197</text>
+        </name>
+      </transition>
+      <arc id="661433600" source="({'system.direct_to_line2'}, {'agv.transport_to_cell2_buffer'})" target="agv.transport_to_cell2_buffer"/>
+      <arc id="661715072" source="({'system.new_order'}, {'system.direct_to_line1', 'system.direct_to_line2'})" target="system.direct_to_line2"/>
+      <arc id="661715840" source="({'cell2.cell2_operation', 'cell1.cell1_operation'}, {'system.order_completed'})" target="system.order_completed"/>
+      <arc id="640022008" source="cell2_failed" target="cell2.repair"/>
+      <arc id="640022536" source="cell2.repair" target="cell2_ok"/>
+      <arc id="640022152" source="cell2_failed" target="cell2.cell2_operation">
+        <arctype>
+          <text>inhibitor</text>
+        </arctype>
+      </arc>
+      <arc id="661716872" source="cell1.fail" target="cell1_failed"/>
+      <arc id="661434128" source="system.direct_to_line1" target="({'system.direct_to_line1'}, {'agv.transport_to_cell1_buffer'})"/>
+      <arc id="661713944" source="({'cell1_buffer.enter_cell1'}, {'cell1.cell1_operation'})" target="cell1.cell1_operation"/>
+      <arc id="661716248" source="cell1_ok" target="cell1.fail"/>
+      <arc id="661716896" source="cell1.repair" target="cell1_ok"/>
+      <arc id="661433504" source="system.direct_to_line2" target="({'system.direct_to_line2'}, {'agv.transport_to_cell2_buffer'})"/>
+      <arc id="661434272" source="({'agv.transport_to_cell1_buffer'}, {'cell1_buffer.enter_cell1'})" target="cell1_buffer.enter_cell1"/>
+      <arc id="661714976" source="system.new_order" target="({'system.new_order'}, {'system.direct_to_line1', 'system.direct_to_line2'})"/>
+      <arc id="661712936" source="cell1_buffer.enter_cell1" target="({'cell1_buffer.enter_cell1'}, {'cell1.cell1_operation'})"/>
+      <arc id="661715240" source="agv_failed" target="agv.transport_to_cell1_buffer">
+        <arctype>
+          <text>inhibitor</text>
+        </arctype>
+      </arc>
+      <arc id="661433264" source="start" target="system.new_order"/>
+      <arc id="661433648" source="({'agv.transport_to_cell2_buffer'}, {'cell2_buffer.enter_cell2'})" target="cell2_buffer.enter_cell2"/>
+      <arc id="661715888" source="cell2.cell2_operation" target="({'cell2.cell2_operation', 'cell1.cell1_operation'}, {'system.order_completed'})"/>
+      <arc id="97502256" source="cell2_ok" target="cell2.fail"/>
+      <arc id="661716152" source="({'agv.transport_to_cell1_buffer'}, {'cell1_buffer.enter_cell1'})" target="agv.transport_to_cell1_buffer">
+        <inscription>
+          <text>10</text>
+        </inscription>
+        <arctype>
+          <text>inhibitor</text>
+        </arctype>
+      </arc>
+      <arc id="661713464" source="agv_failed" target="agv.repair"/>
+      <arc id="640022464" source="cell2.fail" target="cell2_failed"/>
+      <arc id="661433792" source="system.order_completed" target="end"/>
+      <arc id="661434176" source="agv.transport_to_cell1_buffer" target="({'agv.transport_to_cell1_buffer'}, {'cell1_buffer.enter_cell1'})"/>
+      <arc id="661713992" source="({'cell2_buffer.enter_cell2'}, {'cell2.cell2_operation'})" target="cell2_buffer.enter_cell2">
+        <arctype>
+          <text>inhibitor</text>
+        </arctype>
+      </arc>
+      <arc id="661433936" source="cell2_buffer.enter_cell2" target="({'cell2_buffer.enter_cell2'}, {'cell2.cell2_operation'})"/>
+      <arc id="661434320" source="({'system.direct_to_line1'}, {'agv.transport_to_cell1_buffer'})" target="agv.transport_to_cell1_buffer"/>
+      <arc id="661715792" source="cell1.cell1_operation" target="({'cell2.cell2_operation', 'cell1.cell1_operation'}, {'system.order_completed'})"/>
+      <arc id="661716176" source="({'agv.transport_to_cell2_buffer'}, {'cell2_buffer.enter_cell2'})" target="agv.transport_to_cell2_buffer">
+        <inscription>
+          <text>10</text>
+        </inscription>
+        <arctype>
+          <text>inhibitor</text>
+        </arctype>
+      </arc>
+      <arc id="661716728" source="cell1_failed" target="cell1.repair"/>
+      <arc id="661713368" source="agv.repair" target="agv_ok"/>
+      <arc id="661433696" source="agv.transport_to_cell2_buffer" target="({'agv.transport_to_cell2_buffer'}, {'cell2_buffer.enter_cell2'})"/>
+      <arc id="661434080" source="({'cell2_buffer.enter_cell2'}, {'cell2.cell2_operation'})" target="cell2.cell2_operation"/>
+      <arc id="661715168" source="({'system.new_order'}, {'system.direct_to_line1', 'system.direct_to_line2'})" target="system.direct_to_line1"/>
+      <arc id="661715936" source="({'cell1_buffer.enter_cell1'}, {'cell1.cell1_operation'})" target="cell1_buffer.enter_cell1">
+        <arctype>
+          <text>inhibitor</text>
+        </arctype>
+      </arc>
+      <arc id="661716704" source="cell1_failed" target="cell1.cell1_operation">
+        <arctype>
+          <text>inhibitor</text>
+        </arctype>
+      </arc>
+      <arc id="661713512" source="agv_failed" target="agv.transport_to_cell2_buffer">
+        <arctype>
+          <text>inhibitor</text>
+        </arctype>
+      </arc>
+      <arc id="661714160" source="agv_ok" target="agv.fail"/>
+      <arc id="661715960" source="agv.fail" target="agv_failed"/>
+    </page>
+  </net>
+</pnml>
